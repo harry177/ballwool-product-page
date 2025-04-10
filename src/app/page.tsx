@@ -1,5 +1,6 @@
 import { AboutSection } from "@/components/AboutSection";
 import { Carousel } from "@/components/Carousel";
+import { DropdownSection } from "@/components/DropdownSection";
 
 export default function Home() {
   return (
@@ -12,7 +13,7 @@ export default function Home() {
       </section>
       <div className="flex flex-col gap-[32px] w-[511px] pt-[20px] pl-[16px]">
         <AboutSection />
-        <section className="w-[495px] h-[532px]"></section>
+        <DropdownSection />
       </div>
     </>
   );
