@@ -32,7 +32,7 @@ export const AboutSection = () => {
           </div>
         </div>
         <div className="flex flex-col gap-[8px]">
-          <div className="flex items-center gap-[8px] h-[32px]">
+          <div className="flex items-center gap-[9px] h-[32px]">
             <span className="text-[24px] text-[#1f2024] leading-[32px] tracking-[-0.01em]">
               $ 240.00
             </span>

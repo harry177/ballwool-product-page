@@ -1,22 +1,37 @@
-import { userButtonsData } from "@/data/userButtonsData";
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 import { Button } from "./Button";
 import { dropdownData } from "@/data/dropdownData";
 import { ProductDropdown } from "./ProductDropdown";
+import { userButtonsData } from "@/data/userButtonsData";
 
 export const DropdownSection = () => {
+  const [isTextOpened, setIsTextOpened] = useState(false);
+
+  const handleText = () => {
+    setIsTextOpened(!isTextOpened);
+  };
+
   return (
     <section className="flex flex-col gap-[32px] w-[495px]">
       <div className="flex flex-col gap-[24px] w-full">
         <div className="flex flex-col gap-[8px] w-full">
           <article
-            className="w-full h-[96px] text-[16px] text-[#545661] tracking-[-0.01em] leading-[24px] overflow-hidden"
-            style={{
-              maskImage:
-                "linear-gradient(to bottom, black 50%, transparent 100%)",
-              WebkitMaskImage:
-                "linear-gradient(to bottom, black 50%, transparent 100%)",
-            }}
+            className={`w-full text-[16px] text-[#545661] tracking-[-0.01em] leading-[24px] ${
+              !isTextOpened && "h-[96px] overflow-hidden"
+            }`}
+            style={
+              !isTextOpened
+                ? {
+                    maskImage:
+                      "linear-gradient(to bottom, black 50%, transparent 100%)",
+                    WebkitMaskImage:
+                      "linear-gradient(to bottom, black 50%, transparent 100%)",
+                  }
+                : {}
+            }
           >
             Discover your inner world as a street artist in our custom-made Nike
             Air Force sneakers with vibrant graffiti patterns. &nbsp;These
@@ -28,8 +43,11 @@ export const DropdownSection = () => {
             essence of street culture.
           </article>
           <div className="flex justify-center items-center w-full h-[20px]">
-            <span className="text-[14px] text-[#090a0d] font-light tracking-[-0.01em] border-b-[2px] border-[#090a0d] cursor-pointer">
-              Read More
+            <span
+              className="text-[14px] text-[#090a0d] font-light tracking-[-0.01em] border-b-[1px] border-[#090a0d] cursor-pointer mt-[-2px]"
+              onClick={handleText}
+            >
+              {isTextOpened ? "Read Less" : "Read More"}
             </span>
           </div>
         </div>
@@ -44,7 +62,7 @@ export const DropdownSection = () => {
                 className="w-auto h-auto"
               />
             </div>
-            <span className="text-[14px] text-[#090a0d] font-light tracking-[-0.01em]">
+            <span className="text-[14px] text-[#090a0d] font-light tracking-[-0.01em] cursor-pointer">
               Report This Item
             </span>
           </div>
@@ -86,6 +104,13 @@ export const DropdownSection = () => {
               key={index}
               title={item.title}
               borderBottom={item.borderBottom}
+              text={item.text}
+              label={item.label}
+              list={item.list}
+              learnMore={item.learnMore}
+              graph={item.graph}
+              iconType={item.iconType}
+              iconList={item.iconList}
             />
           ))}
         </div>
